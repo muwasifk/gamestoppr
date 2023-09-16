@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 from authentication.models import Profile
 
-from block.models import BlockEvent, UserPing, DevicePing
+from block.models import BlockEvent, DevicePing
 
 from block.serializers import BlockedSerializer, BlockEventSerializer, UserPingSerializer, DevicePingSerializer
 
@@ -33,9 +33,12 @@ class BlockedUpdateView(RetrieveUpdateAPIView):
         device_ping = DevicePing.objects.filter(user=user).last()
 
 
-        if device_ping and timezone.now() - device_ping.last_ping > timedelta(minutes=5):
-            profile.blocked = False
-            profile.save()
+        # Check if the last ping was more than 5 minutes ago
+        if device_ping.last_ping != None:
+            if device_ping.last_ping:
+                if timezone.now() - device_ping.last_ping > timedelta(minutes=5):
+                    profile.blocked = False
+                    profile.save()
 
         serializer = BlockedSerializer(profile)
         return Response(serializer.data)
@@ -72,8 +75,11 @@ class UserPingView(CreateAPIView):
             return Response({'detail': 'User is not blocked'}, status=status.HTTP_400_BAD_REQUEST)
 
         # Check if the last ping was more than 5 minutes ago
-        if device_ping.last_ping and timezone.now() - device_ping.last_ping < timedelta(minutes=5):
-            return Response({'detail': 'Last ping was less than 5 minutes ago'}, status=status.HTTP_400_BAD_REQUEST)
+        if device_ping.last_ping != None:
+            if device_ping.last_ping:
+                if timezone.now() - device_ping.last_ping > timedelta(minutes=5):
+                    profile.blocked = False
+                    profile.save()
 
         # Update the DevicePing
         device_ping.last_ping = timezone.now()
