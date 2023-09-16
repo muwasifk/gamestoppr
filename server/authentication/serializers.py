@@ -7,8 +7,6 @@ from rest_framework.exceptions import ValidationError
 
 from authentication.models import authenticate_user, Profile
 
-from blockchain.models import Wallet
-
 def validate_username(value):
     if not re.match('^[a-zA-Z0-9]*$', value):
         raise ValidationError('Username can only contain alphanumeric characters.')
@@ -31,8 +29,6 @@ class RegisterSerializer(serializers.ModelSerializer):
                                         email=validated_data["email"],
                                         password=validated_data["password"])
         profile = Profile.objects.create(user=user)
-        wallet = Wallet.create_wallet()
-        profile.wallet = wallet
         profile.save()
         return user
 
