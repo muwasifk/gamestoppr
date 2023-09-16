@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from knox.models import AuthToken
@@ -10,6 +9,7 @@ from rest_framework.response import Response
 from authentication.models import Profile
 
 from authentication.serializers import LoginSerializer, RegisterSerializer
+
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer

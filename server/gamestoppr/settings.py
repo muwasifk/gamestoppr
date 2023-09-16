@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'authentication',
+    'block',
+    'device'
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'gamestoppr.urls'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 REST_KNOX = {
     'TOKEN_TTL': None
