@@ -37,6 +37,7 @@ def game_blocker(stop_event):
                     except (psutil.NoSuchProcess, psutil.AccessDenied):
                         pass
 
+
                 for app in apps:
                     if apps[app] == 1:
                         try:

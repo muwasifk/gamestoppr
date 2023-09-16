@@ -5,6 +5,8 @@ export const login = (inputs) => async(dispatch) => {
     try{
         const { data } = await api.login(inputs);
 
+        console.log(data);
+
         dispatch({ type: LOGIN, data })
 
         return "success";

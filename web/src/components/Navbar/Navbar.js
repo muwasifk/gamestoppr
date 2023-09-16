@@ -1,14 +1,20 @@
 import React, {useState} from "react";
 import {AppBar, Box, Button, Typography} from "@mui/material";
+import {useNavigate} from "react-router-dom";
+import {logout} from "../../actions/auth";
+import {useDispatch} from "react-redux";
 
 const Navbar = () => {
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')) !== null ? JSON.parse(localStorage.getItem('profile')).user : JSON.parse(localStorage.getItem('profile')));
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')) ? JSON.parse(localStorage.getItem('profile')) : null);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return(
         <AppBar elevation={0} sx={{display: "flex", backgroundColor: "background.main", alignItems: 'center', flexDirection: "row"}} position="sticky">
             <Box sx={{display: "flex", flexDirection: "row", alignItems: "center", marginLeft: "10px", flexGrow: 2}}>
-                <Button color="background" disableRipple>
+                <Button onClick={() => {navigate("/")}} color="background" disableRipple>
                     <Typography sx={{ fontSize: {xs: "24px", lg: "36px"}, color: "secondary.main", fontWeight: "400", fontFamily: "Holtwood One SC, serif" }}>
                         G
                     </Typography>
@@ -16,19 +22,19 @@ const Navbar = () => {
             </Box>
             <Box sx={{flexGrow: 1,  height: "100%", display: "flex", justifyContent: "flex-end", marginRight: "20px"}}>
                 { user && (
-                    <Button sx={{marginTop: "20px", marginBottom: "20px"}}>
+                    <Button onClick={() => navigate("/dashboard")} sx={{marginTop: "20px", marginBottom: "20px"}}>
                         DASHBOARD
                     </Button>
                 )
                 }
                 { user && (
-                    <Button sx={{marginTop: "20px", marginBottom: "20px"}}>
+                    <Button onClick={() => dispatch(logout()).then((r) => {window.location.reload()})} sx={{marginTop: "20px", marginBottom: "20px"}}>
                         SIGN OUT
                     </Button>
                 )
                 }
                 { !user && (
-                    <Button sx={{marginTop: "20px", marginBottom: "20px"}}>
+                    <Button onClick={() => navigate("/auth")} sx={{marginTop: "20px", marginBottom: "20px"}}>
                         SIGN IN
                     </Button>
                 )
