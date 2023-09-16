@@ -1,0 +1,4 @@
+LOGIN="http://localhost:8000/auth/login/"
+LOGOUT="http://localhost:8000/auth/logout/"
+CHECK="http://localhost:8000/block/ping/"
+AI=""
