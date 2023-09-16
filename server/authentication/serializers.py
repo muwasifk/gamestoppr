@@ -7,6 +7,7 @@ from rest_framework.exceptions import ValidationError
 
 from authentication.models import authenticate_user, Profile
 
+from blockchain.models import Wallet
 
 def validate_username(value):
     if not re.match('^[a-zA-Z0-9]*$', value):
@@ -29,7 +30,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(username=validated_data["username"],
                                         email=validated_data["email"],
                                         password=validated_data["password"])
-        Profile.objects.create(user=user)
+        profile = Profile.objects.create(user=user)
+        wallet = Wallet.create_wallet()
+        profile.wallet = wallet
+        profile.save()
         return user
 
 
