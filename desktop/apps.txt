@@ -1,0 +1,8 @@
+league-of-legends,1
+maple-story,1
+spotify,0
+System,0
+Registry,0
+FusionService.exe,0
+Dell.DCF.UA.Bradbury.API.SubAgent.exe,0
+PhoneExperienceHost.exe,0
