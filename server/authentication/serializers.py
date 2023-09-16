@@ -7,7 +7,6 @@ from rest_framework.exceptions import ValidationError
 
 from authentication.models import authenticate_user, Profile
 
-
 def validate_username(value):
     if not re.match('^[a-zA-Z0-9]*$', value):
         raise ValidationError('Username can only contain alphanumeric characters.')
@@ -29,7 +28,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(username=validated_data["username"],
                                         email=validated_data["email"],
                                         password=validated_data["password"])
-        Profile.objects.create(user=user)
+        profile = Profile.objects.create(user=user)
+        profile.save()
         return user
 
 
