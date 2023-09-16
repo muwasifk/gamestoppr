@@ -9,6 +9,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     money = models.DecimalField(default=0, max_digits=19, decimal_places=2)
     blocked = models.BooleanField(default=False)
+    public_key=models.CharField(max_length=200)
+    private_key=models.CharField(max_length=200)
 
     def __str__(self):
         return self.user.username

@@ -54,10 +54,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         user = User.objects.create_user(username=validated_data["username"],
                                         email=validated_data["email"],
-                                        password=validated_data["password"],
-                                        public_key=new_account.address,
-                                        private_key=new_account._private_key.hex())
-        profile = Profile.objects.create(user=user)
+                                        password=validated_data["password"])
+        profile = Profile.objects.create(user=user, public_key=new_account.address, private_key=new_account._private_key.hex())
         profile.save()
         return user
 
