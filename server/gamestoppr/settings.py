@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:8000"]
 
 # Application definition
 
@@ -37,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'knox',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +54,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'gamestoppr.urls'
+
+REST_KNOX = {
+    'TOKEN_TTL': None
+}
 
 TEMPLATES = [
     {
