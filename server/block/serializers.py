@@ -40,7 +40,6 @@ class BlockedSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
-
 def calculate_rewards(user):
     device_pings = DevicePing.objects.filter(user=user)
     total_valid_ping_count = sum(dp.valid_ping_count for dp in device_pings)

@@ -12,7 +12,7 @@ print(web3.eth.defaultAccount)
 # Path to the compiled contract JSON file
 compiled_contract_path = 'build/contracts/Gitcoin.json'
 # Deployed contract address (see `migrate` command output: `contract address`)
-deployed_contract_address = '0xB8d9e2d66408B3B0230c4A5678cB323050EbA30D'
+deployed_contract_address = '0x3fD8fFeB096cD9b1ac52Bf97Da97802D34b5f593'
 
 with open(compiled_contract_path) as file:
     contract_json = json.load(file)  # load contract info as JSON
@@ -24,29 +24,31 @@ contract = web3.eth.contract(address=deployed_contract_address, abi=contract_abi
 # Call contract function (this is not persisted to the blockchain)
 token_name = contract.functions.balanceOf(web3.eth.accounts[2]).call()
 print(token_name)
-sender_address = "0x1335cE4786b0e84d48d41f8F6ae2e3b15B63A5cd"
-receiver_address = "0x50a55C9feCeE4d789d45ff30fbCa9A8ed6a5a65D"
+sender_address = "0x435D2cceE0f17E1E264766A80141372C5294d5A0"
+receiver_address = "0x0911a3E390b92b1C0fB1BeA21550497fEc6c2FD7"
+
+new_account = web3.eth.account.create() 
+
+print(new_account.address)
+new_account._private_key.hex()
+# sender_private_key = "0x2defc4e471da23cad96e42ba5ff94827e6f0e262d3db6e46beb4e71cdee9d126"
+
+# nonce = web3.eth.get_transaction_count(sender_address)
+
+# tx_data = contract.functions.transfer(sender_address, 5000)
+
+# tx = {
+#     'nonce': nonce,
+#     'to': receiver_address,
+#     'gas': 2000000,  # Adjust gas as needed
+#     'gasPrice': web3.to_wei('30', 'gwei'),  # Adjust gas price as needed
+#     'value': web3.to_wei(1, 'ether'),
+# }
 
 
-
-sender_private_key = "0x4486169bd24ab143d4cbd577cc1932c7ef55594d812744a907d02eac8ea7d262"
-
-nonce = web3.eth.get_transaction_count(sender_address)
-
-tx_data = contract.functions.transfer(sender_address, 5000)
-
-tx = {
-    'nonce': nonce,
-    'to': receiver_address,
-    'gas': 2000000,  # Adjust gas as needed
-    'gasPrice': web3.to_wei('30', 'gwei'),  # Adjust gas price as needed
-    'value': web3.to_wei(1, 'ether'),
-}
+# signed_tx = web3.eth.account.sign_transaction(tx, sender_private_key)
 
 
-signed_tx = web3.eth.account.sign_transaction(tx, sender_private_key)
+# tx_hash = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
 
-
-tx_hash = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
-
-print(f"Transaction Hash: {tx_hash.hex()}")
+# print(f"Transaction Hash: {tx_hash.hex()}")

@@ -34,12 +34,11 @@ class RegisterSerializer(serializers.ModelSerializer):
         web3 = Web3(HTTPProvider(blockchain_address))
         # Set the default account (so we don't need to set the "from" for every transaction call)
         web3.eth.defaultAccount = web3.eth.accounts[0]
-        print(web3.eth.defaultAccount)
 
         # Path to the compiled contract JSON file
-        compiled_contract_path = 'build/contracts/Gitcoin.json'
+        compiled_contract_path = '../blockchain/build/contracts/Gitcoin.json'
         # Deployed contract address (see `migrate` command output: `contract address`)
-        deployed_contract_address = '0xB8d9e2d66408B3B0230c4A5678cB323050EbA30D'
+        deployed_contract_address = '0x49a2B0243bD665c9e87D8a9cD89B90Cef0D895a1'
 
         with open(compiled_contract_path) as file:
             contract_json = json.load(file)  # load contract info as JSON
@@ -49,9 +48,15 @@ class RegisterSerializer(serializers.ModelSerializer):
         contract = web3.eth.contract(address=deployed_contract_address, abi=contract_abi)
 
 
+        new_account = web3.eth.account.create() 
+
+        
+
         user = User.objects.create_user(username=validated_data["username"],
                                         email=validated_data["email"],
-                                        password=validated_data["password"])
+                                        password=validated_data["password"],
+                                        public_key=new_account.address,
+                                        private_key=new_account._private_key.hex())
         profile = Profile.objects.create(user=user)
         profile.save()
         return user

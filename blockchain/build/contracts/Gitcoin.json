@@ -12241,12 +12241,12 @@
         }
       },
       "links": {},
-      "address": "0xB8d9e2d66408B3B0230c4A5678cB323050EbA30D",
-      "transactionHash": "0xc9beeafe373c792993bff6fc786568934789c689a652223610737a90ec594fdb"
+      "address": "0x49a2B0243bD665c9e87D8a9cD89B90Cef0D895a1",
+      "transactionHash": "0x6edf23983c155afc3eee9c04189fd9cd2d59a60481f2a2776fdfa07b64379081"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-09-16T10:38:45.543Z",
+  "updatedAt": "2023-09-16T19:06:42.779Z",
   "networkType": "ethereum",
   "devdoc": {
     "events": {
