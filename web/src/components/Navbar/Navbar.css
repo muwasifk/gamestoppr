@@ -1,0 +1,7 @@
+.highlighted-text-nav {
+    background-color: red;
+    color: white;
+    border-radius: 5px; /* Adjust this value as needed */
+    padding: 2px 2px; /* Adding a little padding can improve the appearance */
+  }
+  

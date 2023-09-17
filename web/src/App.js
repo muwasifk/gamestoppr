@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Navbar from "./components/Navbar/Navbar";
+import Store from "./components/Store/Store";
 
 import {Box, createTheme, ThemeProvider} from "@mui/material";
 
@@ -45,6 +46,7 @@ const App = () => {
                             <Route path="*" element={<Home/>}/>
                             <Route path="/dashboard" element={<Dashboard/>}/>
                             <Route path="/auth" element={<Auth/>}/>
+                            <Route path="/store" element={<Store/>}/>
                         </Routes>
                     </Box>
                 </Box>

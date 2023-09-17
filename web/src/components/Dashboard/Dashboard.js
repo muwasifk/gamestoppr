@@ -5,7 +5,7 @@ import StopIcon from '@mui/icons-material/Stop';
 import "./Dashboard.css";
 import {useNavigate} from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getBlockStatus, getMoney, toggleBlock } from "../../actions/block";
+import { getBlockStatus, getMoney, getPastBlocked, toggleBlock } from "../../actions/block";
 
 const Dashboard = () => {
 
@@ -22,7 +22,12 @@ const Dashboard = () => {
             navigate("/auth");
         }
         dispatch(getBlockStatus()).then((r) => {
-            setBlocked(r.blocked);
+            try{
+                setBlocked(r.blocked);
+            }
+            catch(error){
+
+            }
         })
         dispatch(getMoney()).then((r) => {
             try{
@@ -32,7 +37,7 @@ const Dashboard = () => {
 
             }
         })
-        dispatch(getMoney()).then((r) => {
+        dispatch(getPastBlocked()).then((r) => {
             try{
                 setPast(r);
             }
@@ -87,7 +92,7 @@ const Dashboard = () => {
                     </Paper>
                     <Paper elevation={4} sx={{display: "flex", width: "calc(100% - 40px)", height: "calc(75% - 30px)", margin: "10px 20px 20px 20px", borderRadius: "10px", backgroundColor: "background.main"}}>
                         <Box sx={{display: "flex", flexDirection: "column", width: "calc(100% - 20px)", height: "calc(100% - 10px)", margin: "auto", alignItems: "center"}}>
-                            <Typography sx={{fontSize: '42px', fontFamily: 'Abril Fatface', paddingTop: 5}}>Instructions</Typography>
+                            <Typography sx={{fontSize: '42px', fontFamily: 'Poppins, sans-serif', paddingTop: 5}}>Instructions</Typography>
                             <Typography sx={{fontSize: '20px', paddingTop: 4, paddingLeft: 2, paddingRight: 2}}>
                             Step 1: Install the desktop app here.
                             <br></br><br></br>
@@ -146,8 +151,22 @@ const Dashboard = () => {
                     </Paper>
                 </Box>
                 <Box sx={{display: {xs: "none", lg: "flex"}, height: "100%", width: "30%", flexDirection: "column"}}>
-                    <Paper elevation={4} sx={{display: "flex", width: "calc(100% - 40px)", height: "calc(100% - 40px)", margin: "20px 20px 20px 20px", borderRadius: "10px", backgroundColor: "background.main"}}>
-                        
+                    <Paper elevation={4} sx={{display: "flex", flexDirection: "column", width: "calc(100% - 40px)", height: "calc(100% - 40px)", margin: "20px 20px 20px 20px", borderRadius: "10px", alignItems: "center", backgroundColor: "background.main"}}>
+                        <Typography sx={{fontSize: '42px', fontFamily: 'Poppins, sans-serif', paddingTop: 5}}>Past Transactions</Typography>
+                        <Box sx={{display: "block", width: "100%", marginTop: "10px", flexGrow: 1, overflowY: "auto"}}>
+                        {
+                            past.map((block, index) => (
+                                <Box sx={{display: "block", width: "100%", height: "150px", flexShrinK: 0, backgroundColor: index % 2 === 0 ? "#D3D3D3" : "background.main"}}>
+                                    <Box sx={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "calc(100% - 20px)", height: "100%", margin: "0px 10px"}}>
+                                        <Typography sx={{fontSize: "48px", fontFamily: "Poppins, sans-serif", textAlign: "left", fontWeight: "bold"}}>
+                                            <span style={{color: "#0b8017"}}>{block.rewards} GTC</span>
+                                        </Typography>
+                                        {new Date(block.start_time).toLocaleString()} - {new Date(block.end_time).toLocaleString()}
+                                    </Box>
+                                </Box>
+                            ))
+                        }
+                        </Box>
                     </Paper>
                 </Box>
             </Box>

@@ -23,7 +23,7 @@ const Home = () => {
       <Typography variant="h1" sx={{fontFamily: 'Abril Fatface'}}>
         Game<span className="highlighted-text">Stoppr</span> <span className="blinking-cursor" sx={{ ml: 10 }}>█</span>
       </Typography>
-      <Box sx={{ mt: 4 }}>
+      <Box sx={{ mt: 8 }}>
         { !user && (
             <Button onClick={() => navigate("/auth")} variant="contained" color="primary" sx={{ mr: 2 }}>
             Register

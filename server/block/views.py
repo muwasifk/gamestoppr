@@ -77,11 +77,11 @@ class UserPingView(CreateAPIView):
         if not profile.blocked:
             return Response({'detail': 'User is not blocked'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Check if the last ping was more than 5 minutes ago
+        # Check if the last ping was more than 20 minutes ago
         try:
             if device_ping.last_ping != None:
                 if device_ping.last_ping:
-                    if timezone.now() - device_ping.last_ping > timedelta(minutes=5):
+                    if timezone.now() - device_ping.last_ping > timedelta(minutes=20):
                         profile.blocked = False
                         profile.save()
         except:
