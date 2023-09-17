@@ -45,7 +45,9 @@ class BlockedSerializer(serializers.ModelSerializer):
 
 def calculate_rewards(user):
     device_pings = DevicePing.objects.filter(user=user)
+
     total_valid_ping_count = sum(dp.valid_ping_count for dp in device_pings)
+
     money = Decimal(total_valid_ping_count)
 
     sender_address = "0x435D2cceE0f17E1E264766A80141372C5294d5A0"
@@ -79,7 +81,7 @@ def calculate_rewards(user):
         'to': user.profile.public_key,
         'gas': 2000000,  # Adjust gas as needed
         'gasPrice': web3.to_wei('30', 'gwei'),  # Adjust gas price as needed
-        'value': web3.to_wei(1, 'ether'),
+        'value': web3.to_wei(money, 'ether'),
     }
 
 

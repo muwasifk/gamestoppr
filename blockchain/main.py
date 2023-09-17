@@ -21,8 +21,11 @@ with open(compiled_contract_path) as file:
 # Fetch deployed contract reference
 contract = web3.eth.contract(address=deployed_contract_address, abi=contract_abi)
 
+balance = contract.functions.balanceOf(public_key).call()
+
 # Call contract function (this is not persisted to the blockchain)
 token_name = contract.functions.balanceOf(web3.eth.accounts[2]).call()
+
 print(token_name)
 sender_address = "0x435D2cceE0f17E1E264766A80141372C5294d5A0"
 receiver_address = "0x0911a3E390b92b1C0fB1BeA21550497fEc6c2FD7"

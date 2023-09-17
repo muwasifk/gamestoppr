@@ -34,11 +34,14 @@ class BlockedUpdateView(RetrieveUpdateAPIView):
 
 
         # Check if the last ping was more than 5 minutes ago
-        if device_ping.last_ping != None:
-            if device_ping.last_ping:
-                if timezone.now() - device_ping.last_ping > timedelta(minutes=5):
-                    profile.blocked = False
-                    profile.save()
+        try:
+            if device_ping.last_ping != None:
+                if device_ping.last_ping:
+                    if timezone.now() - device_ping.last_ping > timedelta(minutes=5):
+                        profile.blocked = False
+                        profile.save()
+        except:
+            pass
 
         serializer = BlockedSerializer(profile)
         return Response(serializer.data)
@@ -75,11 +78,14 @@ class UserPingView(CreateAPIView):
             return Response({'detail': 'User is not blocked'}, status=status.HTTP_400_BAD_REQUEST)
 
         # Check if the last ping was more than 5 minutes ago
-        if device_ping.last_ping != None:
-            if device_ping.last_ping:
-                if timezone.now() - device_ping.last_ping > timedelta(minutes=5):
-                    profile.blocked = False
-                    profile.save()
+        try:
+            if device_ping.last_ping != None:
+                if device_ping.last_ping:
+                    if timezone.now() - device_ping.last_ping > timedelta(minutes=5):
+                        profile.blocked = False
+                        profile.save()
+        except:
+            pass
 
         # Update the DevicePing
         device_ping.last_ping = timezone.now()

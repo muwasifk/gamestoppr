@@ -13,3 +13,6 @@ API.interceptors.request.use((req) => {
 export const login = (inputs) => API.post('auth/login/', inputs);
 export const logout = () => API.post('auth/logout/', null);
 export const register = (inputs) => API.post('auth/register/', inputs);
+
+export const getblockstatus = () => API.get('block/', null);
+export const toggleblock = (toggle) => API.put('block/', {blocked: toggle});
