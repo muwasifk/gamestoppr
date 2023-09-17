@@ -13,10 +13,13 @@ const Navbar = () => {
 
     return(
         <AppBar elevation={0} sx={{display: "flex", backgroundColor: "background.main", alignItems: 'center', flexDirection: "row"}} position="sticky">
-            <Box sx={{display: "flex", flexDirection: "row", alignItems: "center", marginLeft: "10px", flexGrow: 2}}>
+            <Box sx={{display: "flex", flexDirection: "row", alignItems: "center", marginLeft: "10px", flexGrow: 2, zIndex: 1000}}>
                 <Button onClick={() => {navigate("/")}} color="background" disableRipple>
-                    <Typography sx={{ fontSize: {xs: "24px", lg: "36px"}, color: "secondary.main", fontWeight: "400", fontFamily: "Holtwood One SC, serif" }}>
-                        G
+                    <Typography sx={{ fontSize: {xs: "24px", lg: "36px"}, color: "green", fontWeight: "400", fontFamily: "VT323" }}>
+                        Game
+                    </Typography>
+                    <Typography sx={{ fontSize: {xs: "24px", lg: "36px"}, color: "red", fontWeight: "400", fontFamily: "VT323" }}>
+                        Stoppr
                     </Typography>
                 </Button>
             </Box>

@@ -69,3 +69,6 @@ LeagueClientUxRender.exe,1
 LeagueClientUx.exe,1
 LeagueCrashHandler64.exe,0
 LeagueClient.exe,1
+SolitaireCasualGamesStub.exe,0
+Solitaire.exe,1
+AppVShNotify.exe,0

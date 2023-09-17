@@ -13,4 +13,4 @@ def check_server(stop_event):
             response = requests.post(server_env_config('CHECK'), headers={'Authorization': f"Token {client_env_config('TOKEN')}"}, data={"device_id": "test1"})
             print(response.content)
 
-        time.sleep(300)
+        time.sleep(10)
