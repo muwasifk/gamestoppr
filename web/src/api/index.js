@@ -16,3 +16,6 @@ export const register = (inputs) => API.post('auth/register/', inputs);
 
 export const getblockstatus = () => API.get('block/', null);
 export const toggleblock = (toggle) => API.put('block/', {blocked: toggle});
+
+export const getmoney = () => API.get('block/money/', null);
+export const getpastblocked = () => API.get('block/block-events/?limit=10', null);

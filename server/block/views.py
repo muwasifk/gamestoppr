@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from knox.models import AuthToken
 from rest_framework import generics, status
-from rest_framework.generics import UpdateAPIView, RetrieveUpdateAPIView, ListAPIView, CreateAPIView
+from rest_framework.generics import UpdateAPIView, RetrieveUpdateAPIView, ListAPIView, CreateAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
@@ -14,7 +14,7 @@ from authentication.models import Profile
 
 from block.models import BlockEvent, DevicePing
 
-from block.serializers import BlockedSerializer, BlockEventSerializer, UserPingSerializer, DevicePingSerializer
+from block.serializers import BlockedSerializer, BlockEventSerializer, UserPingSerializer, DevicePingSerializer, MoneySerializer
 
 from device.models import Device
 
@@ -93,3 +93,11 @@ class UserPingView(CreateAPIView):
         device_ping.save()
 
         return Response(self.get_serializer(device_ping).data)
+    
+class MoneyView(RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = MoneySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user.profile

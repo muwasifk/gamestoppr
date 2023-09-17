@@ -16,12 +16,12 @@ def UI(stop_event):
 
 UIThread = threading.Thread(target=UI, args=(stop_event,))
 checkServerThread = threading.Thread(target=check_server, args=(stop_event,))
-#blockThread = threading.Thread(target=game_blocker, args=(stop_event,))
+blockThread = threading.Thread(target=game_blocker, args=(stop_event,))
 
 UIThread.start()
 checkServerThread.start()
-#blockThread.start()
+blockThread.start()
 
 UIThread.join()
 checkServerThread.join()
-#blockThread.join()
+blockThread.join()

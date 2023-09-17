@@ -112,3 +112,8 @@ class DevicePingSerializer(serializers.ModelSerializer):
     class Meta:
         model = DevicePing
         fields = '__all__'
+
+class MoneySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('money',)
