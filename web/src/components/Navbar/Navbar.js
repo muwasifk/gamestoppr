@@ -12,10 +12,10 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     return(
-        <AppBar elevation={0} sx={{display: "flex", backgroundColor: "background.main", alignItems: 'center', flexDirection: "row"}} position="sticky">
+        <AppBar elevation={0} sx={{display: "flex", backgroundColor: "#ECEFF4", alignItems: 'center', flexDirection: "row"}} position="sticky">
             <Box sx={{display: "flex", flexDirection: "row", alignItems: "center", marginLeft: "10px", flexGrow: 2, zIndex: 1000}}>
                 <Button onClick={() => {navigate("/")}} color="background" disableRipple>
-                    <Typography sx={{ fontSize: {xs: "24px", lg: "36px"}, color: "green", fontWeight: "400", fontFamily: "VT323" }}>
+                    <Typography sx={{ fontSize: {xs: "24px", lg: "36px"}, color: "black", fontWeight: "400", fontFamily: "VT323" }}>
                         Game
                     </Typography>
                     <Typography sx={{ fontSize: {xs: "24px", lg: "36px"}, color: "red", fontWeight: "400", fontFamily: "VT323" }}>

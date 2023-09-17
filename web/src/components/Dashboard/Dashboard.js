@@ -76,23 +76,29 @@ const Dashboard = () => {
             <Box sx={{ display: "flex", flexShrink: 0, flexDirection: "row", height: "100%", width: {xs: "100%", lg: "100%"}, alignItems: "center", justifyContent: "center" }}>
                 <Box sx={{display: {xs: "none", lg: "flex"}, height: "100%", width: "30%", flexDirection: "column"}}>
                     <Paper elevation={4} sx={{display: "flex", width: "calc(100% - 40px)", height: "calc(25% - 30px)", margin: "20px 20px 10px 20px", borderRadius: "10px", backgroundColor: "background.main"}}>
-                        <Box sx={{display: "flex", width: "calc(100% - 20px)", height: "calc(100% - 10px)", margin: "auto", alignItems: "center", justifyContent: "center"}}>
-                            <Typography sx={{fontSize: "42px", fontFamily: "Poppins, sans-serif", textAlign: "center", fontWeight: "bold"}}>
-                                Earned so far: <span style={{color: "#0b8017"}}>{money} GTC</span>
+                        <Box sx={{display: "flex", width: "calc(100% - 20px)", height: "calc(100% - 10px)", margin: "auto", alignItems: "left", ml: 2, justifyContent: "center", flexDirection: "column"}}>
+                            <Typography sx={{fontSize: "75px", fontFamily: "Poppins, sans-serif", textAlign: "left", fontWeight: "bold"}}>
+                                <span style={{color: "#0b8017"}}>{money} GTC</span>
+                            </Typography>
+                            <Typography>
+                                Earned so far from focusing!
                             </Typography>
                         </Box>
                     </Paper>
                     <Paper elevation={4} sx={{display: "flex", width: "calc(100% - 40px)", height: "calc(75% - 30px)", margin: "10px 20px 20px 20px", borderRadius: "10px", backgroundColor: "background.main"}}>
                         <Box sx={{display: "flex", flexDirection: "column", width: "calc(100% - 20px)", height: "calc(100% - 10px)", margin: "auto", alignItems: "center"}}>
-                            <Typography sx={{fontSize: "24px", marginTop: "5px", fontFamily: "Poppins, sans-serif", textAlign: "center", fontWeight: "bold"}}>
-                                Past 10 Sessions
+                            <Typography sx={{fontSize: '42px', fontFamily: 'Abril Fatface', paddingTop: 5}}>Instructions</Typography>
+                            <Typography sx={{fontSize: '20px', paddingTop: 4, paddingLeft: 2, paddingRight: 2}}>
+                            Step 1: Install the desktop app here.
+                            <br></br><br></br>
+                            Step 2: Log in to the desktop app. Remember, in order to gain GTC and for the service to function properly, you must always keep the desktop app running in the background. 
+                            <br></br><br></br>
+                            Step 3: Press the power button to turn on a block. 
+                            <br></br><br></br>
+                            Step 4: Earn GTC the longer you have games blocked!
+                            <br></br><br></br>
+                            Step 5: Visit our marketplace to redeem your GTC for rewards!
                             </Typography>
-                            <Box sx={{display: "flex", flexDirection: "column", width: "100%", maxWidth: "100%", flexGrow: 1, overflowY: "auto"}}>
-                                {
-                                    
-})
-                                }
-                            </Box>
                         </Box>
                     </Paper>
                 </Box>
@@ -141,9 +147,7 @@ const Dashboard = () => {
                 </Box>
                 <Box sx={{display: {xs: "none", lg: "flex"}, height: "100%", width: "30%", flexDirection: "column"}}>
                     <Paper elevation={4} sx={{display: "flex", width: "calc(100% - 40px)", height: "calc(100% - 40px)", margin: "20px 20px 20px 20px", borderRadius: "10px", backgroundColor: "background.main"}}>
-                        <Box sx={{display: "flex", width: "calc(100% - 20px)", height: "calc(100% - 10px)", margin: "auto"}}>
-
-                        </Box>
+                        
                     </Paper>
                 </Box>
             </Box>

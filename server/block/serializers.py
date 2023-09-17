@@ -48,7 +48,7 @@ def calculate_rewards(user):
 
     total_valid_ping_count = sum(dp.valid_ping_count for dp in device_pings)
 
-    money = Decimal(total_valid_ping_count)
+    money = Decimal(min(0.01 * 1.04**total_valid_ping_count, 1))
 
     sender_address = "0x435D2cceE0f17E1E264766A80141372C5294d5A0"
     

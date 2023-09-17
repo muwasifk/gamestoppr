@@ -1,0 +1,24 @@
+/* Hero.css */
+.blinking-cursor {
+    animation: blink 1s step-end infinite;
+    content: '8';
+    display: inline;
+  }
+  
+  @keyframes blink {
+    from,
+    to {
+      color: transparent;
+    }
+    50% {
+      color: black;
+    }
+  }
+
+.highlighted-text {
+    background-color: red;
+    color: white;
+    border-radius: 20px; /* Adjust this value as needed */
+    padding: 2px 5px; /* Adding a little padding can improve the appearance */
+  }
+  
