@@ -72,3 +72,6 @@ LeagueClient.exe,1
 SolitaireCasualGamesStub.exe,0
 Solitaire.exe,1
 AppVShNotify.exe,0
+Notepad.exe,0
+OpenConsole.exe,0
+WindowsTerminal.exe,0

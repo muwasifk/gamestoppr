@@ -45,7 +45,7 @@ const Dashboard = () => {
 
             }
         })
-    }, [])
+    }, [blocked])
 
     const handleClick = (e) => {
         e.preventDefault();
